@@ -1,34 +1,48 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
-<title>Installation of SMART:</title>
+<title>Installation of SMART</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -41,37 +55,10 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 
-</head>
 
-<body>
+
 
 <style type = "text/css">
 .main-container {
@@ -79,13 +66,8 @@ h6 {
   margin-left: auto;
   margin-right: auto;
 }
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -99,40 +81,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -160,7 +115,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -172,7 +127,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -183,14 +138,25 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -200,7 +166,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -236,6 +201,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -248,20 +214,17 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -282,22 +245,22 @@ $(document).ready(function () {
   <a href="index.html">Home</a>
 </li>
 <li>
-  <a href="installation.html">Installation</a>
+  <a href="Installation.html">Installation</a>
 </li>
 <li>
-  <a href="tutorial.html">Tutorial</a>
+  <a href="Tutorial.html">Tutorial</a>
 </li>
 <li>
-  <a href="updates.html">Updates</a>
+  <a href="Updates.html">Updates</a>
 </li>
 <li>
-  <a href="example_data.html">Example data &amp; references</a>
+  <a href="Examples.html">Examples data &amp; references</a>
 </li>
 <li>
-  <a href="caveats.html">Caveats</a>
+  <a href="Caveats.html">Caveats</a>
 </li>
 <li>
-  <a href="development_info.html">Development info</a>
+  <a href="Development.html">Development</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -307,41 +270,90 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
-<h1 class="title toc-ignore">Installation of SMART:</h1>
+<h1 class="title toc-ignore">Installation of SMART</h1>
 
 </div>
 
 
 <hr />
-<p><strong>First install wholebrain</strong></p>
-<p>If you are running on Linux or Mac OSX, the instructions to install wholebrain can be found <a href="http://www.wholebrainsoftware.org/cms/install">here</a>.</p>
-<p>If you are running windows, manual installation of opencv is no longer necessary. The most updated instructions for installation have been written (with additional modification from me) by Ben D. Singer. The instructions can be downloaded <a href="https://osf.io/yejq3/">here</a>.</p>
-<p>Before using SMART, I highly recommend reading through the documentation for wholebrain before using this package. There are a number of tutorials on the wholebrain website that will give you a better idea of the capabilities of the base package.</p>
-<p>If you are experiencing issues with installing wholebrain, please contact Daniel Furth, the creator of the package. We recommend posting issues on the Wholebrain Gitter Lobby ( <a href="https://gitter.im/tractatus/Lobby">link here</a> ), a messaging chat room supporting users of wholebrain.</p>
-<hr />
-<p><strong>Install SMART</strong></p>
+<div id="first-install-wholebrain" class="section level3">
+<h3>First install wholebrain</h3>
+<p>To use SMART, wholebrain must first be installed. If your machine is running Windows or Linux, the most updated instructions were written by Matias Andina and can be found at this <a href="https://matiasandina.github.io/wholebrain_install/">site</a>.</p>
+<p>If you are running on Mac OSX, the most updated instructions to install Wholebrain can be found <a href="https://osf.io/kt3df/">here</a></p>
+<p>The original wholebrain installation <a href="http://www.wholebrainsoftware.org/cms/install">instructions</a> are somewhat outdated. However I highly recommend reading through all the documentation and watching the tutorials for Wholebrain on the original [website] (www.wholebrainsoftware.org) before using this package.</p>
 <p>SMART is easily installed from github using the devtools package:</p>
+<div class="figure">
+<img src="_site/schematics/pipeline_schematic.png" alt="" />
+<p class="caption">pipeline schematic</p>
+</div>
 <pre class="r"><code># Load devtools
 library(devtools) 
  
 # Install SMART
-install_github(&quot;mjin1812/SMART&quot;)
+devtools::install_github(&quot;sgoldenlab/SMART@main&quot;) 
 
 # Load SMART
 library(SMART)
 
 # Pull up package descriptions and list of functions
 ?SMART</code></pre>
-<p><br></p>
-<p><strong>Technical considerations and recommendations:</strong></p>
+</div>
+<div id="docker-with-wholebrain-smart-pre-installed" class="section level3">
+<h3>Docker with wholebrain &amp; SMART pre-installed</h3>
+<p>An alternative to the above instructions using a Wholebrain + SMART Docker image is recommended for those that are having serious installation issues. The docker can also be used to trial the functions that are available with these two packages. Because the docker image is a “snapshot” of the version of wholebrain and SMART at the time of the image creation, any updates to these packages will not be included in the image.</p>
+<p>Please note that we still favor installing wholebrain and SMART directly to your computer if possiible. The docker requires X-Forwarding to render certain graphical user interfaces onto the host computer. This results in a <a href="https://superuser.com/questions/1217280/why-is-x11-forwarding-so-inefficient/1217295">slower overall interactive experience</a>.</p>
+<div id="windows-docker-instructions" class="section level4">
+<h4>Windows Docker Instructions</h4>
+<p><strong>The steps below were tested on a PC running Windows 10 Enterprise, Intel(R) Core(TM) i9-10900 CPU. with 64 GB of installed RAM.</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Install Docker for Windows (4.3.2 was tested). <a href="https://docs.docker.com/desktop/windows/install/">Click here</a>. Run the ‘Docker Desktop Installer.exe’ file and accept the defaults, including ’Enable Hyper-V Windows Features” or “Install required Windows components for WSL-2.”</p></li>
+<li><p>Launch the Docker Desktop application and click yes if there is a pop-up stating the WSL-2 installation is incomplete. Follow the instructions to install the Linux kernel and click “restart” on the Docker Deskstop pop-up to restart the computer and finish the installation.</p></li>
+<li><p>Open up a terminal as an administrator. Pull the wholebrain-SMART docker image from DockerHub with the command:</p></li>
+</ol>
+<pre><code>Docker pull mjin1812/wholebrain_smart</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Install vcxsrv. <a href="https://sourceforge.net/projects/vcxsrv/">Click here</a>. This is a Windows X-Server and is used for displaying graphical information communicated from the running docker container. Click on the installer and accept all defaults.</p></li>
+<li><p>Open the X server (vcxsrv) by clicking on the XLaunch shortcut or searchin for XLaunch in the windows search bar. Hit next and accept the defaults until you reach the “Extra settings” window. MAKE SURE to check the box next to “Disable access control” to allow accepting connections from all clients.</p></li>
+<li><p>Open a terminal as an administrator and type the following command:</p></li>
+</ol>
+<pre><code>ipconfig</code></pre>
+<p>Look for your IPv4 Address for your network adaptor and write it down.</p>
+<ol start="7" style="list-style-type: decimal">
+<li>Enter command below to launch your Docker container. Copy and paste your IPv4 address in the correct position.</li>
+</ol>
+<pre><code>docker run -it --rm -e DISPLAY=&lt;IPv4 address&gt;:0.0 -v /tmp/.X11-unix:/tmp/.X11-unix -e DISABLE_AUTH=true -e ROOT=true -p 8787:8787 mjin1812/wholebrain_smart</code></pre>
+<p>For example, if my IPv4 address is 10.20.230.51 the following command will launch my docker container.</p>
+<pre><code>docker run -it --rm -e DISPLAY=10.20.230.51:0.0 -v /tmp/.X11-unix:/tmp/.X11-unix -e DISABLE_AUTH=true -e ROOT=true -v C:/Users/jinmich/Documents/my_project:/home/rstudio/my_project -p 8787:8787 mjin1812/wholebrain_smart
+</code></pre>
+<p>In the above command, I also included the -v flag to map data from my folder on my host computer, “C:/Users/jinmich/Documents/my_project” to a folder accessible from my Docker container “/home/rstudio/my_project.” Processing of any data within mapped drive using the docker container should access the data using the docker path.</p>
+<ol start="8" style="list-style-type: decimal">
+<li>Open up a web browser and navigate to <code>localhost:8787</code>.If you would like to use a different port, change the argument after the -p flag in the command used to run the docker container. An RStudio interface should appear in the window.</li>
+</ol>
+<p>You can type the command below to check that wholebrain is working.</p>
+<pre class="r"><code>library(wholebrain) 
+filename&lt;-system.file(&#39;sample_tiles/rabiesEGFP.tif&#39;, package=&#39;wholebrain&#39;) 
+seg&lt;-segment(filename)</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li><p>When you are done using the docker container, navigate to the terminal. CTRL + C will stop running the container. You can check that there are no running containers by typing <code>docker container ls</code>.</p></li>
+<li><p>Kill the X server with the terminal command:</p></li>
+</ol>
+<pre><code>taskkill /f /im vcxsrv.exe</code></pre>
+<blockquote>
+<p>Note: when entering paths into the container running RStudio, absolute paths take linux conventions and start with the root path ‘/home’, so make sure to include the first forward slash.</p>
+</blockquote>
+</div>
+</div>
+<div id="technical-considerations-and-recommendations" class="section level3">
+<h3>Technical considerations and recommendations:</h3>
 <ol style="list-style-type: decimal">
 <li>SMART and wholebrain should be installed on a computer with at least 16 GB of RAM. 8GB of RAM may be too low and crash R for some of the pipeline processes.</li>
 <li>The user-experience of this pipeline would be improved with a dual monitor setup, so that any graphics window popups may occur on one monitor, while the command-line interface is visible on the other.</li>
 </ol>
+</div>
 
 
 
@@ -352,7 +364,7 @@ library(SMART)
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -360,6 +372,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
